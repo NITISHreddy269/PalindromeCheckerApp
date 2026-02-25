@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  * ==========================================================
  * MAIN CLASS - UseCase4PalindromeCheckerApp
@@ -26,6 +27,12 @@ public class UseCase4PalindromeCheckerApp {
 
     /**
      * Application entry point for UC4.
+     * Application entry point for UC3.
+     * Application entry point.
+     *
+     * This is the first method executed by the JVM
+     * when the program starts.
+     *
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
@@ -56,6 +63,41 @@ public class UseCase4PalindromeCheckerApp {
             start++;
             end--;
         }
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for input
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        // Build reversed string
+        String reversed = "";
+
+        // Iterate from the last character to the first
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed += input.charAt(i);
+        }
+
+        // Compare original and reversed strings
+        if (input.equals(reversed)) {
+            System.out.println("The string is a palindrome.");
+        } else {
+            System.out.println("The string is NOT a palindrome.");
+        }
+
+        scanner.close();
+        return true;
+        printWelcomeMessage();
+        printVersion();
+    }
+
+    /**
+     * Displays the welcome message.
+     */
+    private static void printWelcomeMessage() {
+        System.out.println("======================================");
+        System.out.println("   Welcome to Palindrome Checker");
+        System.out.println("======================================");
+    }
 
         // Display the result
         System.out.println("Input : " + input);
