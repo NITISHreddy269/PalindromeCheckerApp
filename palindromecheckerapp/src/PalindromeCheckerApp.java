@@ -1,108 +1,64 @@
 /**
- * =========================================================
- * MAIN CLASS - PalindromeCheckerApp
- * =========================================================
+ * ==========================================================
+ * MAIN CLASS - UseCase4PalindromeCheckerApp
+ * ==========================================================
  *
- * Use Case: Hardcoded Palindrome Validation
- *
- * Description:
- * This class demonstrates basic palindrome validation
- * using a hardcoded string value.
- *
- * The application:
- * - Stores a predefined string
- * - Compares characters from both ends
- * - Determines whether the string is a palindrome
- * - Displays the result on the console
- *
- * @author Developer
- * @version 2.0
- * MAIN CLASS - UseCase1PalindromeCheckerApp
- * =========================================================
- *
- * Use Case 1: Application Entry & Welcome Message
+ * Use Case 4: Character Array Based Validation
  *
  * Description:
- * This class represents the entry point of the
- * Palindrome Checker Management System.
+ * This class validates a palindrome by converting
+ * the string into a character array and comparing
+ * characters using the two-pointer technique.
  *
  * At this stage, the application:
- * - Starts execution from the main() method
- * - Displays a welcome message
- * - Shows application version
+ * - Converts string to char array
+ * - Uses start and end pointers
+ * - Compares characters efficiently
+ * - Displays the result
  *
- * No palindrome logic is implemented yet.
- *
- * The goal is to establish a clear startup flow.
+ * This reduces extra memory usage.
  *
  * @author Developer
- * @version 1.0
+ * @version 4.0
  */
 
-public class PalindromeCheckerApp {
+public class UseCase4PalindromeCheckerApp {
 
     /**
-     * Application entry point.
-     *
-     * This is the first method executed by the JVM
-     * when the program starts.
-     *
+     * Application entry point for UC4.
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
 
-        // Hardcoded test string
-        String word = "madam";
+        // Declare and initialize the input string.
+        String input = "radar";
 
-        boolean isPalindrome = checkPalindrome(word);
+        // Convert the string into a character array.
+        char[] chars = input.toCharArray();
 
-        System.out.println("======================================");
-        System.out.println("Palindrome Checker Application");
-        System.out.println("======================================");
-        System.out.println("Input String: " + word);
+        // Initialize pointer at the beginning.
+        int start = 0;
 
-        if (isPalindrome) {
-            System.out.println("Result: The string IS a palindrome.");
-        } else {
-            System.out.println("Result: The string is NOT a palindrome.");
-        }
-    }
+        // Initialize pointer at the end.
+        int end = chars.length - 1;
 
-    /**
-     * Method to check whether a string is a palindrome.
-     */
-    public static boolean checkPalindrome(String word) {
+        // Assume palindrome initially.
+        boolean isPalindrome = true;
 
-        int left = 0;
-        int right = word.length() - 1;
+        // Continue comparison until pointers cross.
+        while (start < end) {
 
-        while (left < right) {
-            if (word.charAt(left) != word.charAt(right)) {
-                return false;
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
             }
-            left++;
-            right--;
+
+            start++;
+            end--;
         }
 
-        return true;
-        printWelcomeMessage();
-        printVersion();
-    }
-
-    /**
-     * Displays the welcome message.
-     */
-    private static void printWelcomeMessage() {
-        System.out.println("======================================");
-        System.out.println("   Welcome to Palindrome Checker");
-        System.out.println("======================================");
-    }
-
-    /**
-     * Displays application version.
-     */
-    private static void printVersion() {
-        System.out.println("Application Version: 1.0");
-        System.out.println("System is ready.");
+        // Display the result
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
