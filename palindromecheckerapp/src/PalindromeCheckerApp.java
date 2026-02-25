@@ -1,48 +1,32 @@
 import java.util.Scanner;
 /**
- * =========================================================
- * MAIN CLASS - PalindromeCheckerApp
- * =========================================================
+ * ==========================================================
+ * MAIN CLASS - UseCase4PalindromeCheckerApp
+ * ==========================================================
  *
- * Use Case: Hardcoded Palindrome Validation
- *
- * Description:
- * This class demonstrates basic palindrome validation
- * using a hardcoded string value.
- *
- * The application:
- * - Stores a predefined string
- * - Compares characters from both ends
- * - Determines whether the string is a palindrome
- * - Displays the result on the console
- *
- * @author Developer
- * @version 2.0
- * MAIN CLASS - UseCase1PalindromeCheckerApp
- * =========================================================
- *
- * Use Case 1: Application Entry & Welcome Message
+ * Use Case 4: Character Array Based Validation
  *
  * Description:
- * This class represents the entry point of the
- * Palindrome Checker Management System.
+ * This class validates a palindrome by converting
+ * the string into a character array and comparing
+ * characters using the two-pointer technique.
  *
  * At this stage, the application:
- * - Starts execution from the main() method
- * - Displays a welcome message
- * - Shows application version
+ * - Converts string to char array
+ * - Uses start and end pointers
+ * - Compares characters efficiently
+ * - Displays the result
  *
- * No palindrome logic is implemented yet.
- *
- * The goal is to establish a clear startup flow.
+ * This reduces extra memory usage.
  *
  * @author Developer
- * @version 1.0
+ * @version 4.0
  */
 
-public class PalindromeCheckerApp {
+public class UseCase4PalindromeCheckerApp {
 
     /**
+     * Application entry point for UC4.
      * Application entry point for UC3.
      * Application entry point.
      *
@@ -53,6 +37,32 @@ public class PalindromeCheckerApp {
      */
     public static void main(String[] args) {
 
+        // Declare and initialize the input string.
+        String input = "radar";
+
+        // Convert the string into a character array.
+        char[] chars = input.toCharArray();
+
+        // Initialize pointer at the beginning.
+        int start = 0;
+
+        // Initialize pointer at the end.
+        int end = chars.length - 1;
+
+        // Assume palindrome initially.
+        boolean isPalindrome = true;
+
+        // Continue comparison until pointers cross.
+        while (start < end) {
+
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
+        }
         Scanner scanner = new Scanner(System.in);
 
         // Prompt user for input
@@ -89,11 +99,8 @@ public class PalindromeCheckerApp {
         System.out.println("======================================");
     }
 
-    /**
-     * Displays application version.
-     */
-    private static void printVersion() {
-        System.out.println("Application Version: 1.0");
-        System.out.println("System is ready.");
+        // Display the result
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
