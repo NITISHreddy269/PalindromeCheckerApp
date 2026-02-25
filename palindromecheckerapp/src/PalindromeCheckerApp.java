@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  * =========================================================
  * MAIN CLASS - PalindromeCheckerApp
@@ -42,6 +43,7 @@
 public class PalindromeCheckerApp {
 
     /**
+     * Application entry point for UC3.
      * Application entry point.
      *
      * This is the first method executed by the JVM
@@ -51,39 +53,28 @@ public class PalindromeCheckerApp {
      */
     public static void main(String[] args) {
 
-        // Hardcoded test string
-        String word = "madam";
+        Scanner scanner = new Scanner(System.in);
 
-        boolean isPalindrome = checkPalindrome(word);
+        // Prompt user for input
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
 
-        System.out.println("======================================");
-        System.out.println("Palindrome Checker Application");
-        System.out.println("======================================");
-        System.out.println("Input String: " + word);
+        // Build reversed string
+        String reversed = "";
 
-        if (isPalindrome) {
-            System.out.println("Result: The string IS a palindrome.");
+        // Iterate from the last character to the first
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed += input.charAt(i);
+        }
+
+        // Compare original and reversed strings
+        if (input.equals(reversed)) {
+            System.out.println("The string is a palindrome.");
         } else {
-            System.out.println("Result: The string is NOT a palindrome.");
-        }
-    }
-
-    /**
-     * Method to check whether a string is a palindrome.
-     */
-    public static boolean checkPalindrome(String word) {
-
-        int left = 0;
-        int right = word.length() - 1;
-
-        while (left < right) {
-            if (word.charAt(left) != word.charAt(right)) {
-                return false;
-            }
-            left++;
-            right--;
+            System.out.println("The string is NOT a palindrome.");
         }
 
+        scanner.close();
         return true;
         printWelcomeMessage();
         printVersion();
