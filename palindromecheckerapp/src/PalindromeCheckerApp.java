@@ -1,3 +1,6 @@
+import java.util.Scanner;
+
+public class PalindromeCheckerApp {
 /**
  * =====================================================
  * MAIN CLASS - UseCase10PalindromeCheckerApp
@@ -23,7 +26,25 @@ public class PalindromeCheckerApp {
      * Application entry point for UC10.
      */
     public static void main(String[] args) {
+        PalindromeService service = new PalindromeService();
+        String input = "racecar";
 
+        boolean result = service.checkPalindrome(input);
+
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome? " + result);
+    }
+}
+
+class PalindromeService {
+
+    public  boolean checkPalindrome(String input) {
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
         String input = "A man a plan a canal Panama";
 
         // Normalize the string: remove non-letters and convert to lowercase
@@ -38,7 +59,10 @@ public class PalindromeCheckerApp {
                 isPalindrome = false;
                 break;
             }
+            start++;
+            end--;
         }
+        return true;
 
         System.out.println("Input : " + input);
         System.out.println("Normalized : " + normalized);
