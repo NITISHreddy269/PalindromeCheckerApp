@@ -1,7 +1,7 @@
 import java.util.Deque;
 import java.util.ArrayDeque;
 
-public class UseCase7PalindromeCheckerApp {
+public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
@@ -31,3 +31,4 @@ public class UseCase7PalindromeCheckerApp {
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
+}
