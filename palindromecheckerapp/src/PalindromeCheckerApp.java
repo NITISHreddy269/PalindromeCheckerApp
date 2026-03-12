@@ -1,37 +1,31 @@
-import java.util.LinkedList;
+import java.util.Scanner;
 
 public class PalindromeCheckerApp {
-
     public static void main(String[] args) {
-
-        // Define the input string
         String input = "level";
+        PalindromeStrategy strategy = new StackStrategy();
+        boolean result = strategy.check(input);
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + result);
+    }
+}
 
-        // Create a LinkedList to store characters
-        LinkedList<Character> list = new LinkedList<>();
+interface PalindromeStrategy {
+    boolean check(String input);
+}
 
-        // Add each character to the linked list
+class StackStrategy implements PalindromeStrategy {
+    @Override
+    public boolean check(String input) {
+        java.util.Stack<Character> stack = new java.util.Stack<>();
         for (char c : input.toCharArray()) {
-            list.add(c);
+            stack.push(c);
         }
-
-        // Flag to track palindrome state
-        boolean isPalindrome = true;
-
-        // Compare until only one or zero elements remain
-        while (list.size() > 1) {
-
-            char first = list.removeFirst();
-            char last = list.removeLast();
-
-            if (first != last) {
-                isPalindrome = false;
-                break;
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                return false;
             }
         }
-
-        // Output result
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        return true;
     }
 }
